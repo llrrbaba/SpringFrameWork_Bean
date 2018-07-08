@@ -1,6 +1,8 @@
 package cn.rocker.springframeworkbean.config;
 
 import cn.rocker.springframeworkbean.Interceptor.CustomInterceptor;
+import cn.rocker.springframeworkbean.filterandinterceptor.BaseInterceptor;
+import cn.rocker.springframeworkbean.filterandinterceptor.ConcreteInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -22,5 +24,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CustomInterceptor()).addPathPatterns("/getRequestParamsByRequestParam");
+        registry.addInterceptor((new BaseInterceptor())).addPathPatterns("/*");
+        registry.addInterceptor(new ConcreteInterceptor()).addPathPatterns("/doWithFilterAndInterceptor");
     }
 }

@@ -1,0 +1,23 @@
+1.过滤器(Filter)|拦截器(Interceptor)|处理器(Handler|Controller)执行顺序
+
+    BaseFilter doFilter executed:/doWithFilterAndInterceptor
+    ConcreteFilter doFilter executed:/doWithFilterAndInterceptor
+    BaseInterceptor preHandle executed...
+    ConcreteInterceptor preHandle executed...
+    FilterAndInterceptorController executed...
+    ConcreteInterceptor postHandle executed...
+    BaseInterceptor postHandle executed...
+    ConcreteInterceptor afterCompletion executed...
+    BaseInterceptor afterCompletion executed...
+    ConcreteFilter doFilter after:/doWithFilterAndInterceptor
+    BaseFilter doFilter after:/doWithFilterAndInterceptor
+
+2.Filter可以在
+    public void doFilter(ServletRequest request, ServletResponse response,
+                FilterChain chain) throws IOException, ServletException;
+  方法中对request(调用具体的处理器之前)进行操作修改，也可以对response(调用具体的处理器之后)
+  进行操作修改；
+
+  Interceptor则不能，没办法对具体的处理器的request或response进行操作
+    boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+    			throws Exception;
