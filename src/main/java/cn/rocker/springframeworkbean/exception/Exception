@@ -1,0 +1,8 @@
+SpringBoot中的异常处理
+    1.AppErrorController实现ErrorController接口，对于请求地址有误的请求进行相应的页面返回
+    2.ExceptionHandlerAdvice通过@ControllerAdvice注解+@ExceptionHandler注解，实现处理器处理过程中的
+      异常的管理，可以返回错误页面，也可以返回json等格式的数据
+
+
+    3.HandlerExceptionResolverDemo实现HandlerExceptionResolver接口，也可以实现对异常的拦截，但是只能
+      返回一个resolveException，目前暂时放弃使用这个
