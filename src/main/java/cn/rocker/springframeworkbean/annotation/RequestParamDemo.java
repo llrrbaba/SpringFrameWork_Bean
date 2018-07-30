@@ -18,9 +18,13 @@ public class RequestParamDemo {
 
     /**
      * 通过@RequestParam获取请求参数
+     * REMIND 如果加上@RequestParam注解的话，请求体里必须带有相关请求参数(可以没有值)
+     * REMIND 如果加上"required=false"，请求体里就可以不带相关参数
+     * REMIND "value"可以将请求参数和方法入参进行映射
+     * REMIND "defaultValue"可以给方法参数设置默认值
      */
     @PostMapping("/byRequestParamAnnotation")
-    public String getRequestParamsByRequestParam(String username, String password){
+    public String getRequestParamsByRequestParam(@RequestParam(defaultValue="123") String username,@RequestParam String password){
         System.out.println(username + ":" + password);
         return username + ":" + password;
     }
